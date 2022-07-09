@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1 - HY Tang&#x27;s Blog</title>
+        <title>2022 开源操作系统学习笔记 - HY Tang&#x27;s Blog</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="rust.html">Rust</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html" class="active"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,12 +142,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+                        <h1 id="2022-开源操作系统学习笔记"><a class="header" href="#2022-开源操作系统学习笔记">2022 开源操作系统学习笔记</a></h1>
+<p>2022.7.1 网上冲浪时发现了由清华大学、CSDN、毛豆教育等共同举办的<a href="https://github.com/LearningOS/rust-based-os-comp2022/blob/main/scheduling.md">2022年开源系统系统训练营</a>活动。异常兴奋！之前很长一段时间内利用碎片时间学习了 Rust 语言，并初步了解了计算机操作系统，因为个人工作是使用C语言、嵌入式实时操作系统进行产品开发，所以对基于 Rust 的计算机操作系统开发非常感兴趣，观看、学习了计算机操作系统的相关的大学视频后，好奇并希望完成相关 Lab，但一直没有找到较好的资源。现在这个训练营提供了完备的学习计划、实验内容，并且有多位老师、助教全程指导，上百位爱好者共同学习、交流，能够系统地学习 Rust 语言和计算机操作系统，堪称完美，希望能坚持到底。</p>
+<p>作为从业者，因为工作和家庭的原因，每天没有太多的时间专用于此次训练营活动，基本每天能够早上1.5个小时，晚上小于1个小时。不管是 Rust 还是计算机操作系统，都还只是入门甚至未入门的状态，每天完成的内容非常有限，所以将每日内容记录在 <code>git commit</code> 中，周末总结一篇周记，这是适用于我的学习过程记录方式。</p>
+<h2 id="weekly-1-73--710"><a class="header" href="#weekly-1-73--710">Weekly 1 (7.3 ~ 7.10)</a></h2>
+<h3 id="内容"><a class="header" href="#内容">内容</a></h3>
+<p>详细查看了训练营的活动安排，分为两个阶段，现开放第一阶段活动，根据第一阶段的完成度决定是否可以进入第二阶段。第一阶段主要分三步：</p>
+<ul>
+<li>step 0 自学 Rust 编程 （大约7～14天）</li>
+<li>step 1 自学 risc-v 系统结构（大约2~7天）</li>
+<li>step 2 基于Rust语言进行操作系统内核实验--based on qemu （大约14~31天）</li>
+</ul>
+<p>根据训练营计划的 <a href="https://github.com/LearningOS/rust-based-os-comp2022/blob/main/scheduling.md#step-0-%E8%87%AA%E5%AD%A6rust%E7%BC%96%E7%A8%8B%E5%A4%A7%E7%BA%A6714%E5%A4%A9">Step0</a> 描述内容，花了一周的时间完成了 <a href="https://github.com/LearningOS/learn_rust_rustlings-thy1037">rustlings</a> 。纯粹只是完成了全部的习题，没有深入体会考核意图，甚至没弄明白的答案的原理。</p>
+<p>整套练习共 84 小题，个人认为涵盖了 Rust 除生命周期外的所有内容，都是一些浅显的考核内容。</p>
+<p>但即使如此，从 <code>error_handling</code> 开始的习题，明显感觉知识掌握不够，需要借助翻阅资料完成。之前的内容是一些基本数据类型、语法定义，与 C语言大同小异，从这里开始就是一些 Rust 特有的数据类型、语法，错误处理是 Rust 的特色之一，C语言中的多用函数返回值判断错误标示，用 <code>goto</code> 方式集中处理错误内容，繁琐且覆盖不全，代码难以阅读，而 Rust 使用特有的 <code>Option</code>、<code>Result</code> 数据类型来定义和处理错误，<code>enum</code> 于C语言也有非常大的区别，要深入理解并熟练掌握使用这三个数据类型，需要大量的代码积累。</p>
+<p>从 <code>conversions</code> 章节开始，部分题目已无法独立完成，需要在网上寻找答案，根据答案进行分析理解。Rust 另一个难点在于类型转换，C语言中可以使用强制类型转换，更是存在 <code>void *</code> 这种极致自由的任意门类型，为了安全，Rust 的数据类型设计的没有那么显然，这也是与编译器作斗争的主要原因，让熟悉 C语言的人概念转换过于艰难，要掌握 Rust 的类型转换需要熟悉每种类型自带的转换方法，如 <code>to_string()</code>、<code>collect()</code>等，并理解每种类型的设计需求，类型间的关系、关联。这些也都只能在后续的实验中，通过阅读大量的代码逐步加深理解。</p>
+<p>掌握人类语言需要多说多听，掌握计算机语言则需要多写多看，代码量是掌握程度的唯一标准。就像张汉东老师说的，大致的意思是：不存在某一个瞬间就突然学会了 Rust。</p>
+<h3 id="计划"><a class="header" href="#计划">计划</a></h3>
+<p>根据活动安排，接下来自学 risc-v，从特权模式、汇编语言入手，两天时间先过一遍所有的汇编指令。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="rust.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
 
                         <div style="clear: both"></div>
@@ -156,6 +176,9 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="rust.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
             </nav>
 
