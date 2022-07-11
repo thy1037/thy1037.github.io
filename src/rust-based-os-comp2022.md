@@ -5,10 +5,14 @@
 
 ## Weekly 1 (7.3 ~ 7.10)
 ### 内容
+#### 1. 查看活动安排
+
 详细查看了训练营的活动安排，分为两个阶段，现开放第一阶段活动，根据第一阶段的完成度决定是否可以进入第二阶段。第一阶段主要分三步：
 * step 0 自学 Rust 编程 （大约7～14天）
 * step 1 自学 risc-v 系统结构（大约2~7天）
 * step 2 基于Rust语言进行操作系统内核实验--based on qemu （大约14~31天）
+
+#### 2. 完成 rustlings
 
 根据训练营计划的 [Step0](https://github.com/LearningOS/rust-based-os-comp2022/blob/main/scheduling.md#step-0-%E8%87%AA%E5%AD%A6rust%E7%BC%96%E7%A8%8B%E5%A4%A7%E7%BA%A6714%E5%A4%A9) 描述内容，花了一周的时间完成了 [rustlings](https://github.com/LearningOS/learn_rust_rustlings-thy1037) 。纯粹只是完成了全部的习题，没有深入体会考核意图，甚至没弄明白的答案的原理。
 
@@ -22,3 +26,9 @@
 
 ### 计划
 根据活动安排，接下来自学 risc-v，从特权模式、汇编语言入手，两天时间先过一遍所有的汇编指令。
+
+## Weekly 2 (7.11 ~ 7.17)
+### 内容
+#### 1. RSIC-V 汇编指令
+
+观看[计算机组成与设计：RISC-V【浙江大学】](https://www.bilibili.com/video/BV1tz411z7GN)的P1～P15，并做了相关笔记[2.1 汇编指令](asm-code.md)，视频主要讲解了 RV32 的基础汇编指令、指令编码格式和芯片内部硬件设计原理，纯粹只是心中有数，并没有做任何实战代码练习
