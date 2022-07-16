@@ -40,3 +40,6 @@
 
 [LAB1 实验报告](rust-based-os-comp2022-lab1.md)
 
+### 计划
+下周需要完成 LAB2 和 LAB 3，任务艰巨。 
+
