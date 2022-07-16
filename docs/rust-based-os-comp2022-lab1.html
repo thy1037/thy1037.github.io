@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>计算机组成与设计：RISC-V - HY Tang&#x27;s Blog</title>
+        <title>LAB1 实验报告 - HY Tang&#x27;s Blog</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab1.html"><strong aria-hidden="true">1.1.</strong> LAB1 实验报告</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html" class="active"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab1.html" class="active"><strong aria-hidden="true">1.1.</strong> LAB1 实验报告</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,18 +142,52 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="计算机组成与设计risc-v"><a class="header" href="#计算机组成与设计risc-v">计算机组成与设计：RISC-V</a></h1>
-<p>这是观看浙江大学【计算机组成与设计：RISC-V】的相关笔记</p>
+                        <h1 id="lab1-实验报告"><a class="header" href="#lab1-实验报告">LAB1 实验报告</a></h1>
+<p><em>2022-7-16</em></p>
+<h2 id="完成记录"><a class="header" href="#完成记录">完成记录</a></h2>
+<ol>
+<li>根据 <code>TaskInfo</code>，在 <code>TaskControlBlock</code> 中添加系统调用计数，任务起始时间</li>
+<li>在 <code>syscall</code> 中添加函数 <code>record_syscall</code> ，记录 <code>syscall_id</code> 对应的信息</li>
+<li><code>record_syscall</code> 调用 <code>TaskManager</code> 内部方法，实现调用次数加1</li>
+<li><code>sys_task_info</code> 中添加函数 <code>get_task_info</code>，获取 <code>TaskInfo</code></li>
+<li><code>TaskInfo</code> 调用 <code>TaskManager</code> 内部方法，完成 <code>TaskInfo</code> 的更新</li>
+</ol>
+<h2 id="简述功能"><a class="header" href="#简述功能">简述功能</a></h2>
+<p>该实验实现了一次性加载多个用户程序，然后分时轮流执行多个程序，程序也可以主动让出CPU使用权。并实现了一个新的系统调试以获取任务运行信息：任务状态、系统调用使用次数、程序运行总时长。</p>
+<h2 id="简答题"><a class="header" href="#简答题">简答题</a></h2>
+<ol>
+<li>sbi版本和三个 bad 测试的报错信息如下：</li>
+</ol>
+<pre><code class="language-bash">[rustsbi] Implementation     : RustSBI-QEMU Version 0.1.1
+...
+[ERROR] [kernel] PageFault in application, bad addr = 0x0, bad instruction = 0x80400408, core dumped.
+[ERROR] [kernel] IllegalInstruction in application, core dumped.
+[ERROR] [kernel] IllegalInstruction in application, core dumped.
+</code></pre>
+<p><code>ch2b_bad_address.rs</code> 中访问了非法地址 <code>0</code>，导致了 PageFault；<code>ch2b_bad_instructions.rs</code> 中使用了非法指令 <code>sret</code>，这是 S 态的指令；<code>ch2b_bad_register.rs</code> 中访问了非法寄存器， S 态的状态寄存器 <code>sstatus</code>用户太程序无权访问。</p>
+<ol start="2">
+<li>关于trap.S
+<ol>
+<li><code>a0</code> 是 <code>__restore</code> 的第一个参数，是内核栈压入Trap上下文之后的栈顶。使用 <code>__restore</code> 的情景1：运行用户程序；情景2：处理完Trap后返回 U 态；</li>
+<li>在 <code>__alltraps</code> 时，将 <code>sstatus</code>, <code>sepc</code>, <code>sscratch</code> 三个寄存器分别存在了 <code>t0</code>, <code>t1</code>, <code>t2</code> 中，因此在 <code>__restore</code> 中需要现恢复这三个寄存器，再将通用寄存器恢复出来。 <br><code>sstatus</code>: <code>SPP</code> 等字段给出 Trap 发生之前 CPU 处在哪个特权级（S/U）等信息； <br><code>sepc</code>: 当 Trap 是一个异常的时候，记录 Trap 发生之前执行的最后一条指令的地址； <br><code>sscratch</code>: 用户态栈顶；</li>
+<li><code>x2</code> 即 <code>sp</code>，已做保存，<code>x4</code> 即 <code>tp</code> 除非手动出于一些特殊用途使用它，否则一般不会被用到；</li>
+<li><code>sp</code> 指向内核栈，<code>sscratch</code> 指向用户栈；</li>
+<li><code>sret</code> 指令后发生状态切换，能进入用户态是因为做了上下文恢复，并在该指令的前一条指令，交换了 <code>sp</code>与<code>sscratch</code>，即 <code>sp</code> 重新指令用户栈；</li>
+<li><code>sp</code> 指向用户栈，<code>sscratch</code> 指向内核栈；</li>
+<li><code>ecall</code>，触发名为 <code>Environment call from U-mode</code> 的异常， 并 Trap 进入 S 模式。</li>
+</ol>
+</li>
+</ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="rust-based-os-comp2022-lab1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="rust-based-os-comp2022.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="asm-code.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="computer-organization-and-design.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -163,11 +197,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="rust-based-os-comp2022-lab1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="rust-based-os-comp2022.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="asm-code.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="computer-organization-and-design.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

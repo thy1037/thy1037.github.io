@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html" class="active"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li class="chapter-item expanded affix "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html" class="active"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab1.html"><strong aria-hidden="true">1.1.</strong> LAB1 实验报告</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -143,7 +143,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="2022-开源操作系统学习笔记"><a class="header" href="#2022-开源操作系统学习笔记">2022 开源操作系统学习笔记</a></h1>
-<p>2022.7.1 网上冲浪时发现了由清华大学、CSDN、毛豆教育等共同举办的<a href="https://github.com/LearningOS/rust-based-os-comp2022/blob/main/scheduling.md">2022年开源系统系统训练营</a>活动。异常兴奋！之前很长一段时间内利用碎片时间学习了 Rust 语言，并初步了解了计算机操作系统，因为个人工作是使用C语言、嵌入式实时操作系统进行产品开发，所以对基于 Rust 的计算机操作系统开发非常感兴趣，观看、学习了计算机操作系统的相关的大学视频后，好奇并希望完成相关 Lab，但一直没有找到较好的资源。现在这个训练营提供了完备的学习计划、实验内容，并且有多位老师、助教全程指导，上百位爱好者共同学习、交流，能够系统地学习 Rust 语言和计算机操作系统，堪称完美，希望能坚持到底。</p>
+<p>2022.7.1 网上冲浪时发现了由清华大学、CSDN、毛豆教育等共同举办的<a href="https://github.com/LearningOS/rust-based-os-comp2022/blob/main/scheduling.md">2022年开源系统系统训练营</a>活动。异常兴奋！之前很长一段时间内利用碎片时间学习了 Rust 语言，并初步了解了计算机操作系统，因为个人工作是使用C语言、嵌入式实时操作系统进行产品开发，所以对基于 Rust 的计算机操作系统开发非常感兴趣，观看、学习了计算机操作系统的相关的教学视频后，好奇并希望完成相关 Lab，但一直没有找到较好的资源。现在这个训练营提供了完备的学习计划、实验内容，并且有多位老师、助教全程指导，上百位爱好者共同学习、交流，能够系统地学习 Rust 语言和计算机操作系统，堪称完美，希望能坚持到底。</p>
 <p>作为从业者，因为工作和家庭的原因，每天没有太多的时间专用于此次训练营活动，基本每天能够早上1.5个小时，晚上小于1个小时。不管是 Rust 还是计算机操作系统，都还只是入门甚至未入门的状态，每天完成的内容非常有限，所以将每日内容记录在 <code>git commit</code> 中，周末总结一篇周记，这是适用于我的学习过程记录方式。</p>
 <h2 id="weekly-1-73--710"><a class="header" href="#weekly-1-73--710">Weekly 1 (7.3 ~ 7.10)</a></h2>
 <h3 id="内容"><a class="header" href="#内容">内容</a></h3>
@@ -166,6 +166,10 @@
 <h3 id="内容-1"><a class="header" href="#内容-1">内容</a></h3>
 <h4 id="1-rsic-v-汇编指令"><a class="header" href="#1-rsic-v-汇编指令">1. RSIC-V 汇编指令</a></h4>
 <p>观看<a href="https://www.bilibili.com/video/BV1tz411z7GN">计算机组成与设计：RISC-V【浙江大学】</a>的P1～P15，并做了相关笔记<a href="asm-code.html">2.1 汇编指令</a>，视频主要讲解了 RV32 的基础汇编指令、指令编码格式和芯片内部硬件设计原理，纯粹只是心中有数，并没有做任何实战代码练习</p>
+<h4 id="2-lab1"><a class="header" href="#2-lab1">2. LAB1</a></h4>
+<p>完成了 LAB1，该实验分三个小项目，其中前两个不用作代码修改就可以通过 Github CI 评分，所以一开始并没有特别关注这两个小实验的内容，结果在第三部分卡壳，返回仔细学习前两个小项目的讲义，为了完成 LAB1 的简答题，讲义反阅读多遍。<strong>不要欠下技术债</strong>，这不仅是 Rust 语言传达的教义，更适用于所有场景。</p>
+<p>其中第二个项目，需要修改 <code>overwrite.py</code> 中的一段内容，修改后 Github CI 通过未及时看到，又修改了其它部分代码，导致 CI 一直没能通过，发现时将所做修改复原依旧没能通过，不得以通过 Git 回滚的方式回到通过状态。没弄明白其中原因，特作记录。</p>
+<p><a href="rust-based-os-comp2022-lab1.html">LAB1 实验报告</a></p>
 
                     </main>
 
@@ -175,7 +179,7 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="computer-organization-and-design.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="rust-based-os-comp2022-lab1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -189,13 +193,29 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="computer-organization-and-design.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="rust-based-os-comp2022-lab1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
