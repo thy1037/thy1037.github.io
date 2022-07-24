@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html" class="active"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab1.html"><strong aria-hidden="true">1.1.</strong> LAB1 实验报告</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html" class="active"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab1.html"><strong aria-hidden="true">1.1.</strong> LAB1 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab2.html"><strong aria-hidden="true">1.2.</strong> LAB2 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab3.html"><strong aria-hidden="true">1.3.</strong> LAB3 实验报告</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -172,6 +172,18 @@
 <p><a href="rust-based-os-comp2022-lab1.html">LAB1 实验报告</a></p>
 <h3 id="计划-1"><a class="header" href="#计划-1">计划</a></h3>
 <p>下周需要完成 LAB2 和 LAB 3，任务艰巨。 </p>
+<h2 id="weekly-3-718--724"><a class="header" href="#weekly-3-718--724">Weekly 3 (7.18 ~ 7.24)</a></h2>
+<h3 id="内容-2"><a class="header" href="#内容-2">内容</a></h3>
+<h3 id="1-地址空间"><a class="header" href="#1-地址空间">1. 地址空间</a></h3>
+<p>这是 CH4-LAB2 的实验内容，这一章的内容是计算机操作系统与嵌入式实时操作系统（FreeRTOS、RT-Thread 这类）的首个也是最大的不同之处：虚拟地址。在不带 <code>mmu</code> 的微处理上无法实现操作系统内核与用户程序、程序与程序间的内存、特权级隔离。一直没有深入了解过内存管理、虚拟地址、特权级，这一章中学习并使用了虚拟地址、特权级切换，对我个人来讲难度很大，收获更大。</p>
+<p>这一章中学到了SV39多级页表的相关知识，包括硬件机制和软件实现。页表项的数据结构、虚拟地址与物理地址的映射，以及惰性加载，有了虚拟地址，可以大大降低了应用的程序的开发难度、简化了程序的逻辑，更是加强了整个系统的稳定性，内核对于应用程序不可见、不可修改，应用的稳定性、安全性一定程度上不再能影响到内核，内核有了对应用程序的监控能力。</p>
+<p>可以将这部分的内容、机制、思想，简化后应用到RTOS开发中，不管是RTOS内核还是应用程序。</p>
+<p><a href="rust-based-os-comp2022-lab2.html">LAB2 实验报告</a></p>
+<h3 id="2-进程及进程管理"><a class="header" href="#2-进程及进程管理">2. 进程及进程管理</a></h3>
+<p>这是 CH5-LAB3 的实验内容，引入了进程的概念，不同于RTOS中的任务、线程，RTOS可以通过特殊方法曲线实现动态加载应用，但无法做到地址空间的隔离，更无法做到特权级的隔离。</p>
+<p>进程可以说是有了地址空间后的自然产物，前几章中的任务概念的改进版。主要是引入 <code>fork</code> 这个非常巧妙的系统调用，将程序扩展方式一下子放大，并且参数传递非常方便，配合 <code>exec</code> 可以很方便的启动新执行流。</p>
+<p>增加了新的进程调度机制，<code>stride</code> 算法实现了进程优先级，对比时间片轮询机制更具普适性，但调度机制本身就很复杂，这里简单的借此简单地学习进程管理。</p>
+<p><a href="rust-based-os-comp2022-lab3.html">LAB3 实验报告</a></p>
 
                     </main>
 
