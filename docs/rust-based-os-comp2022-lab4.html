@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>计算机组成与设计：RISC-V - HY Tang&#x27;s Blog</title>
+        <title>LAB4 实验报告 - HY Tang&#x27;s Blog</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab1.html"><strong aria-hidden="true">1.1.</strong> LAB1 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab2.html"><strong aria-hidden="true">1.2.</strong> LAB2 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab3.html"><strong aria-hidden="true">1.3.</strong> LAB3 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab4.html"><strong aria-hidden="true">1.4.</strong> LAB4 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab5.html"><strong aria-hidden="true">1.5.</strong> LAB5 实验报告</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html" class="active"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab1.html"><strong aria-hidden="true">1.1.</strong> LAB1 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab2.html"><strong aria-hidden="true">1.2.</strong> LAB2 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab3.html"><strong aria-hidden="true">1.3.</strong> LAB3 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab4.html" class="active"><strong aria-hidden="true">1.4.</strong> LAB4 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab5.html"><strong aria-hidden="true">1.5.</strong> LAB5 实验报告</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,18 +142,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="计算机组成与设计risc-v"><a class="header" href="#计算机组成与设计risc-v">计算机组成与设计：RISC-V</a></h1>
-<p>这是观看浙江大学【计算机组成与设计：RISC-V】的相关笔记</p>
+                        <h1 id="lab4-实验报告"><a class="header" href="#lab4-实验报告">LAB4 实验报告</a></h1>
+<p><em>2022-07-27</em></p>
+<h2 id="简述功能"><a class="header" href="#简述功能">简述功能</a></h2>
+<p>引入文件系统，实现了一个简单的文件系统 <code>easy-fs</code>，程序 elf 数据以文件的形式存在硬盘中，<code>spawn</code> 系统调用产生新进程时可以通过打开并读取文件的方式获取程序数据。兼容LAB3的基础上，增加 <code>linkat</code>,<code>unlinkat</code>,<code>fstat</code>三个系统调用。</p>
+<h2 id="简答题"><a class="header" href="#简答题">简答题</a></h2>
+<ol>
+<li>目前的文件系统仅支持绝对路径，<code>root inode</code> 是整个文件系统的入口，对于任何文件/目录的索引都必须从根目录开始向下级进行，索引完成后才能对文件/目录进行操作。<br> 如果 <code>root inode</code> 内容损坏，整个文件系统将无法访问。</li>
+</ol>
+<h2 id="完成记录"><a class="header" href="#完成记录">完成记录</a></h2>
+<ol>
+<li>查看工程代码结构，在适当的位置添加 LAB3 相关代码；</li>
+<li>对于 <code>sys_fstat</code> 系统调用，需要先在 easy-fs 中增加接口，efs 又通过 虚拟文件系统 vfs 对外暴露接口，涉及到虚拟地址与物理地址的转换;</li>
+<li>对于 <code>sys_linkat</code>, <code>sys_unlinkat</code> 同样需要在 vfs 层先做虚拟地址与物理地址的转换，并对现有的 <code>inode</code> 进行操作。</li>
+</ol>
+<p>使用过嵌入式操作系统的文件系统 Fatfs，没有深入了解其实现，与本实验中的 easy-fs 在实现原理在大同小异，后期可以对比这看，加深理解。 </p>
+<p>过程中参考了 Yakkhini 同学的代码，后续需要强化该章知识。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="rust-based-os-comp2022-lab5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="rust-based-os-comp2022-lab3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="asm-code.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="rust-based-os-comp2022-lab5.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -163,11 +177,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="rust-based-os-comp2022-lab5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="rust-based-os-comp2022-lab3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="asm-code.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="rust-based-os-comp2022-lab5.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
