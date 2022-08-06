@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>LAB2 实验报告 - HY Tang&#x27;s Blog</title>
+        <title>阶段二 周报 - HY Tang&#x27;s Blog</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-Phase1-weekly.html"><strong aria-hidden="true">1.1.</strong> 阶段一 周报</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab1.html"><strong aria-hidden="true">1.1.1.</strong> LAB1 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab2.html" class="active"><strong aria-hidden="true">1.1.2.</strong> LAB2 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab3.html"><strong aria-hidden="true">1.1.3.</strong> LAB3 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab4.html"><strong aria-hidden="true">1.1.4.</strong> LAB4 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab5.html"><strong aria-hidden="true">1.1.5.</strong> LAB5 实验报告</a></li></ol></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-Phase2-weekly.html"><strong aria-hidden="true">1.2.</strong> 阶段二 周报</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-Phase2-toolchain.html"><strong aria-hidden="true">1.2.1.</strong> 工具链及基础工程</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">Rust</li><li class="chapter-item expanded "><a href="rust-based-os-comp2022.html"><strong aria-hidden="true">1.</strong> 2022 开源操作系统学习笔记</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-Phase1-weekly.html"><strong aria-hidden="true">1.1.</strong> 阶段一 周报</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab1.html"><strong aria-hidden="true">1.1.1.</strong> LAB1 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab2.html"><strong aria-hidden="true">1.1.2.</strong> LAB2 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab3.html"><strong aria-hidden="true">1.1.3.</strong> LAB3 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab4.html"><strong aria-hidden="true">1.1.4.</strong> LAB4 实验报告</a></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-lab5.html"><strong aria-hidden="true">1.1.5.</strong> LAB5 实验报告</a></li></ol></li><li class="chapter-item expanded "><a href="rust-based-os-comp2022-Phase2-weekly.html" class="active"><strong aria-hidden="true">1.2.</strong> 阶段二 周报</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust-based-os-comp2022-Phase2-toolchain.html"><strong aria-hidden="true">1.2.1.</strong> 工具链及基础工程</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">RISC-V</li><li class="chapter-item expanded "><a href="computer-organization-and-design.html"><strong aria-hidden="true">2.</strong> 计算机组成与设计：RISC-V</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asm-code.html"><strong aria-hidden="true">2.1.</strong> 汇编指令</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,77 +142,31 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="lab2-实验报告"><a class="header" href="#lab2-实验报告">LAB2 实验报告</a></h1>
-<p><em>2022-7-20</em></p>
-<h2 id="简述功能"><a class="header" href="#简述功能">简述功能</a></h2>
-<p>在引入页表机制，实现虚拟地址后，首先重现实现了 LAB1 的功能：获取时间和获取任务信息。之后增加了 <code>mmap</code> 和 <code>munmap</code> 两个系统调用用于申请和释放内存。</p>
-<h2 id="简答题"><a class="header" href="#简答题">简答题</a></h2>
+                        <h1 id="阶段二-周报"><a class="header" href="#阶段二-周报">阶段二 周报</a></h1>
+<p>经过一个月的第一阶段学习，进一步学习了Rust语言，深入学习了计算机操作系统。因为本身在这两方面基础就很薄弱，加上不是学生，没有足够多的精力投入，整个过程比较艰难，很多知识点并没有完全掌握，欠下的技术债较多。但无论如何，收获是巨大的，还是很满意的，欠下的东西通过后面的学习要一一补上。</p>
+<h2 id="weekly-1-73--710"><a class="header" href="#weekly-1-73--710">Weekly 1 (7.3 ~ 7.10)</a></h2>
+<h3 id="内容"><a class="header" href="#内容">内容</a></h3>
+<h4 id="1-熟悉阶段二"><a class="header" href="#1-熟悉阶段二">1. 熟悉阶段二</a></h4>
+<p>进入第二阶段，我的选题是关于rFreeRTOS的，可以说和第一阶段的rCore关联不大，这一点比较可惜，但和个人的工作息息相关，第一次看到这个项目就萌生了极大兴趣。经过取舍、考虑，最终选定这个课题，目标是将该项目移植到手头的 赤菟 CH32V307 开发板。</p>
+<p>从上周六到这周五，每天都天课题报告，主要是关于 zCore 的，认真听了，收获没那么大。</p>
+<h4 id="2-跑通最简工程"><a class="header" href="#2-跑通最简工程">2. 跑通最简工程</a></h4>
+<p>参照 STM32 的工程，完成了 CH32V307 的最简 Rust 工程，包括工程编译、固件下载、调试。详细内容在<a href="rust-based-os-comp2022-Phase2-toolchain.html">工具链及基础工程</a>中。</p>
+<h3 id="计划"><a class="header" href="#计划">计划</a></h3>
+<p>下周尽快实现：</p>
 <ol>
-<li>SV39 页表项组成：</li>
+<li>点灯</li>
+<li>尽快实现栈的切换</li>
 </ol>
-<table><thead><tr><th>域</th><th>名称</th><th>作用</th></tr></thead><tbody>
-<tr><td>bit 0</td><td>V</td><td>仅当该位为 1 时，页表项有效</td></tr>
-<tr><td>bit 1</td><td>R</td><td>读允许</td></tr>
-<tr><td>bit 2</td><td>W</td><td>写允许</td></tr>
-<tr><td>bit 3</td><td>X</td><td>取指允许（执行）</td></tr>
-<tr><td>bit 4</td><td>U</td><td>U 态下是否允许访问</td></tr>
-<tr><td>bit 5</td><td>G</td><td>忽略</td></tr>
-<tr><td>bit 6</td><td>A</td><td>记录该位清零后，对应的虚拟页面是否被访问过（读）</td></tr>
-<tr><td>bit 7</td><td>D</td><td>记录该位清零后，对应的虚拟页面是否被修改过（写）</td></tr>
-<tr><td>bit 8~9</td><td>RSW</td><td>忽略</td></tr>
-<tr><td>bit 10~53</td><td>PPN[0～2]</td><td>44位的物理页号</td></tr>
-<tr><td>bit 54~63</td><td>Reserved</td><td>保留</td></tr>
-</tbody></table>
-<ol start="2">
-<li>
-<p>缺页</p>
-<ol>
-<li><code>mcause</code> 寄存器会保存发生中断异常的原因，其中 <code>Exception Code</code> 为 12 表示指令缺页异常，13 表示 Load 异常，15 表示 Store/AMO 缺页异常，</li>
-<li>发生异常时寄存器描述
-<ul>
-<li>scause：<code>interrupt</code> 记录中断还是异常， <code>Exception Code</code> 记录中断/异常的种类</li>
-<li>sstatus：记录当前状态，<code>SPP</code> 记录当前特权等级</li>
-<li>stvec：记录处理 trap 的入口地址</li>
-<li>sscratch：其中的值是指向 Hart 相关的 S 态上下文的指针，如内核栈顶地址</li>
-<li>sepc：trap 发生时的下一条指令地址</li>
-<li>stval：trap 发生进入 S 态时会将异常信息写入，用于帮助处理 trap，其中会保存缺页异常的虚拟地址</li>
-</ul>
-</li>
-<li>优点1：加快程序启动速度；优点2：避免内存重复加载，在启动时就将所有内容加载到内存，如果没有及时执行，有可能会因为内存不足而被覆盖，执行时需要重新加载</li>
-<li>大约占用 20M = 10G / 512M 内存</li>
-<li><code>Page Fault</code> 服务函数首先判断该数据的虚拟地址是否是该任务的合法地址；然后取出保存在对应页表项中的扇区地址，将在该扇区数据；更新页表项内容，将页表项中的存在位置 1；最后返回任务，让该任务重新执行访问数据的指令。</li>
-<li>页表项 <code>V</code> 标志位置 0</li>
-</ol>
-</li>
-<li>
-<p>双页表与单页表</p>
-<ol>
-<li>通过多级页表更换页表</li>
-<li>页表项 <code>U</code> 标志位置 0</li>
-<li>内核态和用户态切换时不需要更换页表，也就不需要跳板</li>
-<li>双页表实现下用户程序和内核转换时、用户程序转换时都需要更换页表，而对于单页表实现，不同用户线程切换时需要更换页表</li>
-</ol>
-</li>
-</ol>
-<h2 id="完成记录"><a class="header" href="#完成记录">完成记录</a></h2>
-<ol>
-<li>在引入业表机制，实现虚拟地址后,用户程序只能接收到虚拟地址，实现 <code>mm::get_refmut</code>,虚拟地址到物理地址的转换</li>
-<li>重新实现系统调用计数的实现，注意这一次需要加入程序开始运行的时间的，而不是简单的从0开始</li>
-<li>在 <code>TaskManager</code> 中实现 <code>mmap</code> 和 <code>munmap</code></li>
-<li><code>mmap</code> 需要注意检查起始地址对齐问题，对应地址是否有效，插入页表项后检查是否成功，</li>
-<li><code>munmap</code> 需要注意待释放区域是否有效，释放后检查是否还在页表项内</li>
-</ol>
-<p><strong>过程中参考了 Yakkhini 同学的代码，无法独立完成，后续需要强化该章知识。</strong></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="rust-based-os-comp2022-lab1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="rust-based-os-comp2022-lab5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="rust-based-os-comp2022-lab3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="rust-based-os-comp2022-Phase2-toolchain.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -222,11 +176,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="rust-based-os-comp2022-lab1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="rust-based-os-comp2022-lab5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="rust-based-os-comp2022-lab3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="rust-based-os-comp2022-Phase2-toolchain.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
