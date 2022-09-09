@@ -7,3 +7,6 @@ title = "HY Tang's Blog"
 
 [build]
 build-dir = "docs"
+
+[output.html]
+git-repository-url = "https://github.com/thy1037/thy1037.github.io"

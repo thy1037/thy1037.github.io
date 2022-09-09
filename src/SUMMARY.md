@@ -12,6 +12,20 @@
         - [LAB5 实验报告](rust-based-os-comp2022-lab5.md)
     - [阶段二 周报](rust-based-os-comp2022-Phase2-weekly.md)
         - [工具链及基础工程](rust-based-os-comp2022-Phase2-toolchain.md)
+        - [基于 Qemu 环境搭建](rust-based-os-comp2022-Phase2-qemu-env.md)
+        - [Nezha 开发板环境搭建](rust-based-os-comp2022-Phase2-nezha-env.md)
+        - [RFreeRTOS 学习总结](rust-based-os-comp2022-Summary.md)
+            - [Summary00](rust-based-os-comp2022-Summary00.md)
+            - [Summary01](rust-based-os-comp2022-Summary01.md)
+            - [Summary02](rust-based-os-comp2022-Summary02.md)
+            - [Summary03](rust-based-os-comp2022-Summary03.md)
+            - [Summary04](rust-based-os-comp2022-Summary04.md)
+            - [Summary05](rust-based-os-comp2022-Summary05.md)
+            - [Summary06](rust-based-os-comp2022-Summary06.md)
+            - [Summary07](rust-based-os-comp2022-Summary07.md)
+            - [Summary08](rust-based-os-comp2022-Summary08.md)
+            - [Summary09](rust-based-os-comp2022-Summary09.md)
+            - [Summary10](rust-based-os-comp2022-Summary10.md)
 
 # RISC-V
 
